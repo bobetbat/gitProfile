@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router'
+import {  withRouter } from 'react-router-dom'
+import routes from './routes'
+// import { inject, observer } from 'mobx-react'
+// import { Store } from '../../utils/interfaces/storeInterfaces'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+// @inject('store')
+// @observer
+class App extends React.Component {
+  render() {
+    return (
+     <div className='App'>
+        <Switch>
+          {routes.map(({ path, exact, component: Component, ...rest }) => (
+            <Route
+              key={path}
+              path={path}
+              exact={exact}
+              render={() => <Component {...this.props} {...rest} />}
+            />
+          ))}
+        </Switch>
+     </div>
+   );
+  }
 }
 
-export default App;
+export default withRouter(App)
