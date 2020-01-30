@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Box = ( props ) => {
-	console.log('props',props.repos_url)
 	return props.title === 'Public Repos' ? 
 	<NavLink to={{
 		pathname:`/repos/${props.id}`,

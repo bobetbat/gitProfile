@@ -1,6 +1,6 @@
-import Profile from './Profile'
+import Profile from './views/Profile'
 //import React from 'react'
-import Repos from './Repos'
+import Repos from './views/Repos'
 
 
 export default [

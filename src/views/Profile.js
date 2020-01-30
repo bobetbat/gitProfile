@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import Header from './Header'
-import GitData from './GitData'
+import Header from '../components/Header'
+import GitData from '../components/GitData'
 
 export default class Profile extends React.Component {
 	constructor() {
@@ -28,7 +28,6 @@ export default class Profile extends React.Component {
 	}
 
 	fetchData = async () => {
-		console.log(this.state)
 		try {
 			const profile = await axios.get(`https://api.github.com/users/${this.state.login}`)
 			.then((res) => {
@@ -40,8 +39,6 @@ export default class Profile extends React.Component {
 			this.setState({notFound: true})
 			console.log(err)
 		} 
-		// console.log('wtf1',profile)
-		// console.log('wtf22',this.state.profile)
 		
 	}
 

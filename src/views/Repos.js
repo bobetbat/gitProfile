@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header'
+import Header from '../components/Header'
 import { NavLink, Link } from 'react-router-dom'
 import axios from 'axios'
-import btn from './backbtn.png'
+import btn from '../backbtn.png'
 
 
 export default class Repos extends React.Component {
@@ -17,7 +17,6 @@ export default class Repos extends React.Component {
 	}
 	
 	fetchData = async () => {
-		console.log('repos',this.props.location.repolink)
 		try {
 			const reposRaw = await axios.get(`${this.props.location.repolink}`)
 			.then((res) => {
@@ -28,11 +27,7 @@ export default class Repos extends React.Component {
 		} catch(err) {
 			console.log(err)
 		}
-
-		console.log('wtf1',this.state.repos)
-		// console.log('wtf22',this.state.profile)
 	}
-	// console.log('repos list', repos)
 	render() {
 		return (
 			<div className='main'>
