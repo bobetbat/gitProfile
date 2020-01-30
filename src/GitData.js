@@ -39,7 +39,7 @@ export default class GitData extends React.Component {
 		return (
 			<div className='gitData'>
 				<div className="row">
-					<img alt='' url={avatar_url} className="avatar"/>
+					<img alt='' src={avatar_url} className="avatar"/>
 					<Box 
 						type="numb"
 						title='Followers' 

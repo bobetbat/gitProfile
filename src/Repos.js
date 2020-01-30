@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import { NavLink, Link } from 'react-router-dom'
 import axios from 'axios'
-// import style from './scss/style.scss'
+import btn from './backbtn.png'
 
 
 export default class Repos extends React.Component {
@@ -38,11 +38,20 @@ export default class Repos extends React.Component {
 			<div className='main'>
 				<Header />
 				<div className='container'>
-					<div className='row'>
+					<div className='title'>
 						<NavLink to='/'>
-							<div>back</div>
+							<img 
+							src={btn} 
+							height="20px"
+							alt=""/>
 						</NavLink>
 						<div className='titleName'>{this.props.location.owner}</div>
+					</div>
+					<div className='listItem bgc'>
+						<div className='listItem-id'>id</div>
+						<div className='listItem-name'>Name</div>
+						<div className='listItem-size'>Size</div>
+						<div className='listItem-url'>Link</div>
 					</div>
 					{this.state.repos.map((repo) => (
 						<div key={repo.id} className='listItem'>
