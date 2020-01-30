@@ -3,14 +3,7 @@ import './App.css';
 import { Switch, Route } from 'react-router'
 import {  withRouter } from 'react-router-dom'
 import routes from './routes'
-// import { inject, observer } from 'mobx-react'
-// import { Store } from '../../utils/interfaces/storeInterfaces'
 
-
-
-
-// @inject('store')
-// @observer
 class App extends React.Component {
   render() {
     return (

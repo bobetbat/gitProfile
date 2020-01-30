@@ -1,0 +1,57 @@
+$primary-color: #333;
+$max-width:1100px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $primary-color;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $primary-color;
+  background-color: #fff;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textInput {
+  display: flex;
+  width: 100%;
+  & > input {
+    margin: 0.8rem 0.2rem;
+    padding: 0 1rem;
+    min-width: 20rem;
+    height: 1.6rem;
+  }
+  & > button {
+    margin: 0.8rem 0.2rem;
+    width: 6rem;
+    height: 1.8rem;
+  }
+}
+
+.numb {
+  & > p {
+    margin: 0.2rem 0.8rem;
+  }
+}
+.text {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  & > p {
+    width: 4.8rem;
+    text-align: start;
+  }
+}
+
+img {
+  width: 7rem;
+  height: 7rem;
+}

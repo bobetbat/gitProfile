@@ -19,7 +19,7 @@ export default class Profile extends React.Component {
 
 	fetchData = async () => {
 		console.log(this.state)
-		const profile = await axios.get(`https://api.github.com/users/${this.state.login.value}`)
+		const profile = await axios.get(`https://api.github.com/users/${this.state.login}`)
 		.then((res) => {
 			this.setState({notFound: false})
 			return res.data
@@ -36,24 +36,22 @@ export default class Profile extends React.Component {
 
 	render() {
 		return (
-			<div className='mainWrap'>
-				<Header />	
-				<div className='input'>
-					<input
-					type='text'
-					onChange={e =>
-						this.handleChange(
-							 e.target.value,
-						)
-					}
-					/>
-					<button onClick={this.fetchData}>Submit</button>
+			<div className='main'>
+				<Header />
+				<div className='container'>
+					<div className="textInput">
+						<input
+						type='text'
+						onChange={e =>
+							this.handleChange(
+								e.target.value,
+							)
+						}
+						/>
+						<button onClick={this.fetchData}>Submit</button>
+					</div>
+					<GitData data={this.state.profile} />	
 				</div>
-				{ this.state.notFound ? 
-					<div> 404 </div>
-					:
-					<GitData data={this.state.profile} />
-				}
 			</div>
 		)
 	}
