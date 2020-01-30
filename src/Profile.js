@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-
 import Header from './Header'
 import GitData from './GitData'
 
@@ -10,7 +9,18 @@ export default class Profile extends React.Component {
 		this.state = {
 			login: '',
 			notFound: true,
-			profile: {}
+			profile: {
+				login: '-',
+				id:'-',
+				avatar_url:'-',
+				public_repos:'-',
+				public_gists:'-',
+				followers:'-',
+				following:'-',
+				name:'-',
+				email:'-',
+				bio:'-'
+			}
 		}
 	}
 	handleChange = (value) => {
@@ -19,16 +29,17 @@ export default class Profile extends React.Component {
 
 	fetchData = async () => {
 		console.log(this.state)
-		const profile = await axios.get(`https://api.github.com/users/${this.state.login}`)
-		.then((res) => {
-			this.setState({notFound: false})
-			return res.data
-		})
-		.catch((err) => {
+		try {
+			const profile = await axios.get(`https://api.github.com/users/${this.state.login}`)
+			.then((res) => {
+				this.setState({notFound: false})
+				return res.data
+			})
+			this.setState({profile: profile})
+		}	catch(err) { 
 			this.setState({notFound: true})
 			console.log(err)
-		}) 
-		this.setState({profile: profile})
+		} 
 		// console.log('wtf1',profile)
 		// console.log('wtf22',this.state.profile)
 		

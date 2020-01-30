@@ -1,10 +1,23 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Box = ( props ) => {
-	return <div className={props.type}>
+	console.log('props',props.repos_url)
+	return props.title === 'Public Repos' ? 
+	<NavLink to={{
+		pathname:`/repos/${props.id}`,
+		repolink: props.repos_url,
+		owner: props.login
+	}}>
+		<div className={props.type}>
+			<p>{props.title}</p>
+			<span>{props.value ? props.value : '-'}</span>
+		</div>
+	</NavLink> : 
+	<div className={props.type}>
 		<p>{props.title}</p>
 		<span>{props.value ? props.value : '-'}</span>
-	</div>			
+	</div>
 }
 
 
@@ -20,7 +33,8 @@ export default class GitData extends React.Component {
 			following,
 			name,
 			email,
-			bio
+			bio,
+			repos_url
 		} = this.props.data
 		return (
 			<div className='gitData'>
@@ -39,7 +53,10 @@ export default class GitData extends React.Component {
 					<Box 
 						type="numb"
 						title='Public Repos' 
-						value={public_repos} 
+						value={public_repos}
+						repos_url={repos_url}
+						id={id}
+						login={login}
 						/>
 					<Box 
 						type="numb"
